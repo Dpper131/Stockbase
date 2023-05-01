@@ -41,18 +41,18 @@ class ApplicationController extends Controller
     public function add(Request $request){
         $request->validate([
             'uuid' => 'required',
-            'vendor_code' => 'required',
+            'vendor__code' => 'required',
             'price' => 'required',
-            'count' => 'required',
+            'ccount' => 'required',
             'type' => 'required',
         ]);
-        if(($request->type == 'Покупка' || $request->type == 'Продажа') && Client::where(['id' => $request->uuid])->first() != null && Stock::where(['vendor_code' => $request->vendor_code])->first() != null){
+        if(($request->type == 'Покупка' || $request->type == 'Продажа') && Client::where(['id' => $request->uuid])->first() != null && Stock::where(['vendor_code' => $request->vendor__code])->first() != null){
             try{
                 $c=new Application();
-                $c->vendor_code=$request['vendor_code'];
+                $c->vendor_code=$request['vendor__code'];
                 $c->type=$request['type'];
                 $c->fixed_price=$request['price'];
-                $c->count=$request['count'];
+                $c->count=$request['ccount'];
                 $c->client_id=$request['uuid'];
                 $c->status="ожидается";
                 $c->save();
@@ -67,7 +67,7 @@ class ApplicationController extends Controller
     }
     public function show($id,$uuid = null)
     {
-        $app = Application::where(['id' => $id])->first();
+        $app = Application::where(['id' => $uuid ?? $id])->first();
         if(($uuid!= null  || auth()->user()->roleChecker() == true) and $app!=null){
             $appFullInfo=$app->getAppInfo();
             return response()->json([

@@ -46,15 +46,15 @@
 
             <div class="col-12">
                 <div class="form-floating">
-                    <input type="number" class="form-control" id="vendor_code" name="vendor_code" placeholder="vendor code" />
-                    <label for="vendor_code" class="form-label">Код ценной бумаги</label>
+                    <input type="number" class="form-control" id="vendor__code" name="vendor__code" placeholder="vendor code" />
+                    <label for="vendor__code" class="form-label">Код ценной бумаги</label>
                 </div>
             </div>
 
             <div class="col-12">
                 <div class="form-floating">
-                    <input class="form-control" type="number" id="count" name="count" placeholder="count" required>
-                    <label class="form-label" for="count">Количество</label>
+                    <input class="form-control" type="number" id="ccount" name="ccount" placeholder="ccount" required>
+                    <label class="form-label" for="ccount">Количество</label>
                 </div>
             </div>
             <div class="col-12">
